@@ -7,6 +7,8 @@ class Misbha extends StatefulWidget {
   State<Misbha> createState() => _MisbhaState();
 }
 
+List azkarList = ['سبحان الله ', 'الحمدالله', 'الله اكبر'];
+
 class _MisbhaState extends State<Misbha> {
   int currentNumRoll = 0;
   int currentNumTisbh = 0;
@@ -42,7 +44,7 @@ class _MisbhaState extends State<Misbha> {
           children: [
             Container(
               child: Text(
-                'الله اكبر',
+                "${azkar()}",
                 style: TextStyle(
                     color: Color.fromARGB(255, 247, 158, 106),
                     fontSize: 30,
@@ -114,7 +116,7 @@ class _MisbhaState extends State<Misbha> {
               onPressed: () {
                 setState(() {
                   currentNumTisbh++;
-                  if (currentNumTisbh == 33) {
+                  if (currentNumTisbh == 100) {
                     currentNumRoll++;
                     currentNumTisbh = 0;
                   }
@@ -203,5 +205,15 @@ class _MisbhaState extends State<Misbha> {
         ),
       ),
     );
+  }
+
+  String azkar() {
+    if (currentNumTisbh <= 33) {
+      return azkarList[0];
+    } else if (currentNumTisbh == 34 || currentNumTisbh <= 66) {
+      return azkarList[1];
+    } else {
+      return azkarList[2];
+    }
   }
 }
